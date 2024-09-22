@@ -1,0 +1,16 @@
+version: '3'
+
+services:  
+     backend:    
+       build: .    
+       ports:      
+          - "5000:5000"   
+       environment:      
+          - DATABASE_URL=sqlite:///todos.db     
+          - STRIPE_SECRET_KEY=your-stripe-secret-key     
+     frontend:    
+        build: ./frontend  
+        ports:     
+           - "3000:3000"    
+        environment:      
+           - REACT_APP_BACKEND_URL=http://localhost:5000
